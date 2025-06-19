@@ -28,14 +28,14 @@ export default function Home() {
       });
 
       if (!response.ok) {
-        throw new Error('Error al generar la imagen');
+        throw new Error('Error generating image');
       }
 
       const data = await response.json();
       setImageUrl(data.imageUrl);
     } catch (err) {
       console.error(err);
-      setError('Error al generar la imagen');
+      setError('Error generating image');
     } finally {
       setLoading(false);
     }
@@ -54,7 +54,7 @@ export default function Home() {
           required
         />
         <button type="submit" disabled={loading}  className={styles.button}>
-          {loading ? 'Generando...' : 'Generar Imagen'}
+          {loading ? 'Generating...' : 'Generate Image'}
         </button>
       </form>
       
@@ -62,7 +62,7 @@ export default function Home() {
 
       {loading && 
       <div className={styles.loading}>
-        <p>Generando imagen, por favor espera...</p>
+        <p>Generating image, please wait....</p>
         <Spinner />
       </div>
       }

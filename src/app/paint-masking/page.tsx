@@ -47,14 +47,14 @@ export default function PaintMasking() {
         });
 
         if (!response.ok) {
-            throw new Error('Error al generar la imagen');
+            throw new Error('Error generating image');
         }
 
         const data = await response.json();
         setImageUrl(data.imageUrl);
         } catch (err) {
         console.error(err);
-        setError('Error al generar la imagen');
+        setError('Error generating image');
         } finally {
         setLoading(false);
         }
@@ -72,18 +72,14 @@ export default function PaintMasking() {
             onChange={(e) => setPrompt(e.target.value)}
             required
             />
-            <button type="submit" disabled={loading}  className={styles.button}>
-            {loading ? 'Generando...' : 'Generar Imagen'}
-            </button>
-        </form>
 
-        <div className={styles.fileUploadWrapper}>
+            <div className={styles.fileUploadWrapper}>
             <label htmlFor="fileUpload" className={styles.uploadLabel}>
                 {
                     baseImage ? (
-                        <span className={styles.uploadedText}>Sube una nueva imagen para pintarle con la mascara</span>
+                        <span className={styles.uploadedText}>Upload a new image to paint him with the mask</span>
                     ) : (
-                        <span className={styles.uploadText}>Sube la imagen para pintarle con la mascara!</span>  
+                        <span className={styles.uploadText}>Upload the image to paint him with the mask!</span>  
                     )
                 }
             </label>
@@ -93,19 +89,27 @@ export default function PaintMasking() {
                 accept="image/*"
                 onChange={handleUploadBaseImage}
                 className={styles.hiddenInput}
+                required
             />
             {baseImage && (
-                <span className={styles.fileName}>Imagen base cargada con exito ✅</span>
+                <span className={styles.fileName}>Image successfully uploaded✅</span>
             )}
         </div>
+        {
+            baseImage && (
+                <div className={styles.imagePreview}>
+                    <img src={baseImage} alt="Base" className={styles.image} />
+                </div>
+            )
+        }
 
         <div className={styles.fileUploadWrapper}>
             <label htmlFor="maskUpload" className={styles.uploadLabel}>
                 {
                     maskImage ? (
-                        <span className={styles.uploadedText}>Sube una nueva máscara de imagen</span>
+                        <span className={styles.uploadedText}>Upload a new image mask</span>
                     ) : (
-                        <span className={styles.uploadText}>Sube la máscara de imagen para pintarle con la máscara!</span>  
+                        <span className={styles.uploadText}>Upload an image mask</span>  
                     )
                 }
             </label>
@@ -115,17 +119,31 @@ export default function PaintMasking() {
                 accept="image/*"
                 onChange={handleUploadMask}
                 className={styles.hiddenInput}
+                required
             />
             {maskImage && (
-                <span className={styles.fileName}>Imagen base cargada con exito ✅</span>
+                <span className={styles.fileName}>Image successfully uploaded✅</span>
             )}
         </div>
+
+        {
+            maskImage && (
+                <div className={styles.imagePreview}>
+                    <img src={maskImage} alt="Base" className={styles.image} />
+                </div>
+            )
+        }
+            
+            <button type="submit" disabled={loading}  className={styles.button}>
+            {loading ? 'Generando...' : 'Generar Imagen'}
+            </button>
+        </form>
         
         {error && <p style={{ color: 'red' }}>{error}</p>}
 
         {loading && 
         <div className={styles.loading}>
-            <p>Generando imagen, por favor espera...</p>
+            <p>Generating image, please wait....</p>
             <Spinner />
         </div>
         }

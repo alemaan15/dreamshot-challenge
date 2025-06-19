@@ -2,6 +2,9 @@
   max-width: 700px;
   margin: 0 auto;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
@@ -17,6 +20,8 @@
   flex-direction: column;
   gap: 1rem;
   margin-bottom: 2rem;
+  width: 100%;
+  max-width: 400px;
 }
 
 .input {
@@ -24,6 +29,7 @@
   font-size: 1rem;
   border: 2px solid #ccc;
   border-radius: 8px;
+  width: 100%;
 }
 
 .button {
@@ -35,6 +41,7 @@
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  width: 100%;
 }
 
 .button:hover:not(:disabled) {
@@ -52,6 +59,8 @@
   flex-direction: column;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 400px;
 }
 
 .uploadLabel {
@@ -63,7 +72,8 @@
   font-weight: 500;
   font-size: 1rem;
   cursor: pointer;
-  width: fit-content;
+  width: 100%;
+  text-align: center;
   transition: background-color 0.3s ease;
 }
 

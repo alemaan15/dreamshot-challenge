@@ -53,9 +53,9 @@ export default function MaskingPage() {
             <label htmlFor="fileUpload" className={styles.uploadLabel}>
                 {
                     image ? (
-                        <span className={styles.uploadedText}>Sube una nueva imagen</span>
+                        <span className={styles.uploadedText}>Upload a new image</span>
                     ) : (
-                        <span className={styles.uploadText}>Sube una imagen</span>  
+                        <span className={styles.uploadText}>Upload an image</span>  
                     )
                 }
             </label>
@@ -67,7 +67,7 @@ export default function MaskingPage() {
                 className={styles.hiddenInput}
             />
             {image && (
-                <span className={styles.fileName}>Imagen cargada con exito ✅</span>
+                <span className={styles.fileName}> Image successfully uploaded✅</span>
             )}
         </div>
 
@@ -98,7 +98,7 @@ export default function MaskingPage() {
 
       {image && (
         <button onClick={handleDownload} className={styles.button}>
-          Descargar máscara
+          Download mask
         </button>
       )}
     </main>

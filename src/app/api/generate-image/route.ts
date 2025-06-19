@@ -7,7 +7,6 @@ export async function POST(req: NextRequest) {
   const { prompt } = body;
 
   try {
-    console.log('Received prompt:', prompt)
     const replicateRes = await fetch('https://api.replicate.com/v1/models/black-forest-labs/flux-schnell/predictions', {
       method: 'POST',
       headers: {
